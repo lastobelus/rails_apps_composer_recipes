@@ -21,7 +21,7 @@ gem "config_spartan"
 create_file "config/initializers/app_config.rb" do
   <<-'eos'
 AppConfig = ConfigSpartan.create do
-  ['app_config', "app_config_#{Rails.env}", 'local_app_config'].each do |f|
+  ['app_config', "app_config_#{Rails.env}", 'app_config_local'].each do |f|
     f << ".yaml"
     f = Rails.root.join('config', f)
     file f if File.exist?(f)
@@ -40,7 +40,7 @@ dbg:
 eos
   end
 end
-create_file "config/local_app_config.yaml.sample" do
+create_file "config/app_config_local.yaml.sample" do
   <<-eos
 # This file should be in .gitignore and is for local or temporary overrides to the app_config.
     
@@ -48,7 +48,7 @@ create_file "config/local_app_config.yaml.sample" do
 end
 git :add => '-A' if prefer :git, true
 git :commit => "-qm 'rails_apps_composer: lastobelus:config'" if prefer :git, true
-append_file ".gitignore", "config/local_app_config.yaml"
+append_file ".gitignore", "config/app_config_local.yaml"
 
 # A recipe has two parts: the Ruby code and YAML matter that comes after a blank line with the __END__ keyword.
 
