@@ -11,11 +11,11 @@ gem 'foundation-activeadmin', git: "git://github.com/lastobelus/foundation-activ
 # sass-rails is also required but is by default in rails
 
 
-
+user_model = prefer(:activeadmin_user_model) || "User"
 after_bundler do
   if prefer(:activeadmin_users, true)
-    generate 'active_admin:install User' 
-    generate 'active_admin:resource User' 
+    generate "active_admin:install #{user_model}" 
+    generate "active_admin:resource #{user_model}" 
   else
     generate 'active_admin:install --skip-users'
   end
@@ -51,4 +51,4 @@ category: other
 config:
   - user_model:
       type: string
-      prompt: "What model will you use for admin users ? type 'skip' to skip this step (default is AdminUser)"
+      prompt: "What model will you use for admin users ? type 'skip' to skip this step (default is User)"
