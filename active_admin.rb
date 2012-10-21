@@ -10,35 +10,40 @@ gem 'foundation-activeadmin', git: "git://github.com/lastobelus/foundation-activ
 
 # sass-rails is also required but is by default in rails
 
+@prefs[:activeadmin_user_model] = config[:activeadmin_user_model]
 
-user_model = prefer(:activeadmin_user_model) || "User"
 after_bundler do
-  if prefer(:activeadmin_users, true)
-    generate "active_admin:install #{user_model}" 
-    generate "active_admin:resource #{user_model}" 
+  say "after_bundler. config: #{config.inspect}"
+  if config["activeadmin_generate_devise_admin_user"]
+    generate "active_admin:install #{config['activeadmin_user_model']} --registerable"
   else
     generate 'active_admin:install --skip-users'
   end
-end
-
-<<-eos
-# https://github.com/ryanb/cancan/wiki/changing-defaults
-def current_ability
-  @current_ability ||= Ability.new(current_admin_user)
-end
-eos
-
-
-<<-eos
-# need to switch between root path and admin root path depending on user type
-rescue_from CanCan::AccessDenied do |exception|
-  respond_to do |format|
-    format.html do
-      redirect_to admin_root_path, :alert => exception.message
-    end
+  
+  if config["activeadmin_users_panel"]
+    generate "active_admin:resource #{config['activeadmin_user_model']}"
   end
 end
-eos
+
+inject_into_file 'app/controllers/application_controller.rb', :before => "\nend", :verbose => true do <<-RUBY
+\n
+  # https://github.com/ryanb/cancan/wiki/changing-defaults
+  def current_ability
+    @current_ability ||= Ability.new(current_admin_user)
+  end
+  
+  # need to switch between root path and admin root path depending on user type
+  rescue_from CanCan::AccessDenied do |exception|
+    respond_to do |format|
+      format.html do
+        redirect_to admin_root_path, :alert => exception.message
+      end
+    end
+  end
+  
+RUBY
+end 
+
 
 __END__
 
@@ -49,6 +54,12 @@ author: systho
 category: other
 
 config:
-  - user_model:
+  - activeadmin_users_panel:
+      type: boolean
+      prompt: Do you want to add a Users admin panel?
+  - activeadmin_admin_user_model:
       type: string
-      prompt: "What model will you use for admin users ? type 'skip' to skip this step (default is User)"
+  - activeadmin_generate_devise_admin_user:
+      type: boolean
+      prompt: Do you want to generate a devise user for the admin user?
+      if: activeadmin_admin_user_model
