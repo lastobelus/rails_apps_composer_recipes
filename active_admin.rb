@@ -21,7 +21,7 @@ after_bundler do
     generate 'active_admin:install --skip-users'
   end
   
-  config['activeadmin_admin_user_model'] = "AdminUser" if config['activeadmin_admin_user_model'].empty?
+  config['activeadmin_admin_user_model'] = "AdminUser" if config['activeadmin_admin_user_model'].nil? || config['activeadmin_admin_user_model'].empty?
   
   if config["activeadmin_users_panel"]
     generate "active_admin:resource #{config['activeadmin_admin_user_model']}"
