@@ -1,0 +1,1 @@
+gem "config_spartan",  git: "git://github.com/lastobelus/rails_apps_composer.git", branch: "devcloudcoder"
