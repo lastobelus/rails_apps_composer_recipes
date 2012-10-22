@@ -10,19 +10,26 @@ gem 'foundation-activeadmin', git: "git://github.com/lastobelus/foundation-activ
 
 # sass-rails is also required but is by default in rails
 
-@prefs[:activeadmin_user_model] = config[:activeadmin_user_model]
+@prefs[:activeadmin_admin_user_model] = config[:activeadmin_admin_user_model]
 
+registerable = config[:activeadmin_user_registerable] ? ' --registerable' : ''
 after_bundler do
   say "after_bundler. config: #{config.inspect}"
   if config["activeadmin_generate_devise_admin_user"]
-    generate "active_admin:install #{config['activeadmin_user_model']} --registerable"
+    generate "active_admin:install #{config['activeadmin_admin_user_model']}#{registerable}"
   else
     generate 'active_admin:install --skip-users'
   end
   
+  config['activeadmin_admin_user_model'] = "AdminUser" if config['activeadmin_admin_user_model'].empty?
+  
   if config["activeadmin_users_panel"]
-    generate "active_admin:resource #{config['activeadmin_user_model']}"
+    generate "active_admin:resource #{config['activeadmin_admin_user_model']}"
+    generate "active_admin:resource User" unless (config['activeadmin_admin_user_model'] == "User")
   end
+  
+  run 'bundle exec rake db:migrate'
+
 end
 
 inject_into_file 'app/controllers/application_controller.rb', :before => "\nend", :verbose => true do <<-RUBY
@@ -49,7 +56,7 @@ __END__
 
 name: ActiveAdmin
 description: "Install Active Admin and add a dashboard for Users"
-author: systho
+author: lastobelus
 
 category: other
 
@@ -59,7 +66,12 @@ config:
       prompt: Do you want to add a Users admin panel?
   - activeadmin_admin_user_model:
       type: string
+      prompt: What should the Admin User model be called? (default AdminUser)
   - activeadmin_generate_devise_admin_user:
       type: boolean
       prompt: Do you want to generate a devise user for the admin user?
       if: activeadmin_admin_user_model
+  - activeadmin_admin_user_registerable:
+      type: boolean
+      prompt: Do you want the admin user to be registerable?
+      if: activeadmin_generate_devise_admin_user
