@@ -6,7 +6,6 @@ name: devcloudcoder_core
 description: "Core setup for a devcloudcoder app"
 author: lastobelus
 
-requires: [setup, gems]
-run_after: [setup, gems]
-category: configuration
-
+requires: []
+run_after: []
+category: devcloudcoder
