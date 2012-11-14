@@ -1,0 +1,89 @@
+/ Header and Nav
+- if AppConfig.site.nav.main.hierarchical
+  %nav.top-bar
+    %ul
+      / Title Area
+      = render "layouts/brand_nav"
+      %li.toggle-topbar
+        %a{:href => "#"}
+    %section
+      / Left Nav Section
+      %ul.left
+        = yield(:main_nav)
+        %li.divider
+      / Right Nav Section
+      %ul.right
+        %li.divider
+        = yield(:user_nav)
+- else
+  %ul.nav-bar
+    = render "layouts/brand_nav"
+    = yield(:main_nav)
+    %li.divider
+    = yield(:user_nav)
+/ End Header and Nav
+/ Main Grid Section
+.row
+  .three.columns
+    .panel
+      %h5 Panel Title
+      %p This is a three columns grid panel with an arbitrary height.
+  .six.columns
+    .panel
+      %h5 Panel Title
+      %p This is a six columns grid panel with an arbitrary height. Bacon ipsum dolor sit amet salami ham hock biltong ball tip drumstick sirloin pancetta meatball short loin.
+  .three.columns
+    .panel
+      %h5 Panel Title
+      %p This is a three columns grid panel with an arbitrary height.
+.row
+  .six.columns
+    .panel
+      %h5 Panel Title
+      %p This is a six columns grid panel with an arbitrary height. Bacon ipsum dolor sit amet salami ham hock biltong ball tip drumstick sirloin pancetta meatball short loin.
+  .two.columns
+    .panel
+      %p
+        %img{:src => "http://placehold.it/200x200"}/
+  .four.columns
+    .panel
+      %h5 Panel Title
+      %p This is a four columns grid panel with an arbitrary height. Bacon ipsum dolor sit amet salami.
+.row
+  .four.columns
+    .panel
+      %p
+        %img{:src => "http://placehold.it/400x300"}/
+  .four.columns
+    .panel
+      %p
+        %img{:src => "http://placehold.it/400x300"}/
+  .four.columns
+    .panel
+      %p
+        %img{:src => "http://placehold.it/400x300"}/
+.row
+  .six.columns
+    .panel
+      %h5 Panel Title
+      %p This is a six columns grid panel with an arbitrary height. Bacon ipsum dolor sit amet salami ham hock biltong ball tip drumstick sirloin pancetta meatball short loin.
+  .three.columns
+    .panel
+      %h5 Panel Title
+      %p This is a three columns grid panel with an arbitrary height.
+  .three.columns
+    .panel
+      %h5 Panel Title
+      %p This is a three columns grid panel with an arbitrary height.
+/ End Grid Section
+/ Footer
+%footer.row
+  .twelve.columns
+    %hr/
+    .row
+      .six.columns
+        %p &copy; Copyright no one at all. Go to town.
+      .six.columns
+        %ul.link-list.right
+          = render 'layouts/footer_nav'
+￿

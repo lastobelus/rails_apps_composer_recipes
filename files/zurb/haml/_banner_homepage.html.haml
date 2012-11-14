@@ -1,0 +1,59 @@
+.row
+  .twelve.columns
+    %ul.nav-bar
+      = yield(:main_nav_flat)
+    %ul.nav-bar.right
+      = yield(:user_nav_flat)
+    / Main Banner Image - place in a paragraph to enforce the modular scale spacing
+    %p
+      %img{:src => "http://placehold.it/1000x400&text=[banner img]"}/
+/ End Nav and Banner
+/ Main Content Section
+.row
+  .eight.columns
+    %h4 This is a content section.
+    %p Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.
+    %p Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.
+    %p
+      %a.secondary.small.button{:href => "#"} Next Page &rarr;
+  .four.columns
+    / Gallery sidebar with a block grid. Note: block grid items should be the same size for optimal results
+    %ul.block-grid.three-up
+      %li
+        %a{:href => "#"}
+          %img{:src => "http://placehold.it/120x120"}/
+      %li
+        %a{:href => "#"}
+          %img{:src => "http://placehold.it/120x120"}/
+      %li
+        %a{:href => "#"}
+          %img{:src => "http://placehold.it/120x120"}/
+      %li
+        %a{:href => "#"}
+          %img{:src => "http://placehold.it/120x120"}/
+      %li
+        %a{:href => "#"}
+          %img{:src => "http://placehold.it/120x120"}/
+      %li
+        %a{:href => "#"}
+          %img{:src => "http://placehold.it/120x120"}/
+/ Call to Action Panel
+.row
+  .twelve.columns
+    .panel
+      %h4 Get in touch!
+      .row
+        .nine.columns
+          %p We'd love to hear from you, you attractive person you.
+        .three.columns
+          %a.radius.button.right{:href => "#"} Contact Us
+/ Footer
+%footer.row
+  .twelve.columns
+    %hr/
+    .row
+      .six.columns
+        %p &copy; Copyright no one at all. Go to town.
+      .six.columns
+        %ul.link-list.right
+          = render 'layouts/footer_nav'

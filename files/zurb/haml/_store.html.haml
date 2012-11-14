@@ -1,0 +1,88 @@
+.row
+  .twelve.columns
+    / Navigation
+    .row
+      .twelve.columns
+        %ul.top-bar
+          %ul
+            %li.name
+              %h1
+                %a{:href => "#"} Title
+            %li.toggle-topbar
+              %a{:href => "#"}
+          %section
+            %ul.left
+              = yield(:main_nav)
+            %ul.right
+              = yield(:user_nav)
+    / End Navigation
+    .row
+      / Side Bar
+      .four.mobile-four.columns
+        %img{:src => "http://placehold.it/500x500&text=Logo"}
+          .hide-for-small.panel
+            %h3 Header
+            %h5.subheader
+              Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Donec dignissim nibh fermentum odio ornare sagittis.
+          %a{:href => "#"}
+            .panel.callout.radius{:align => "center"}
+              %h6 99&nbsp; items in your cart
+      / End Side Bar
+      / Thumbnails
+      .eight.columns
+        .row
+          .four.mobile-two.columns
+            %img{:src => "http://placehold.it/1000x1000&text=Thumbnail"}
+              .panel
+                %h5 Item Name
+                %h6.subheader $000.00
+          .four.mobile-two.columns
+            %img{:src => "http://placehold.it/500x500&text=Thumbnail"}
+              .panel
+                %h5 Item Name
+                %h6.subheader $000.00
+          .four.mobile-two.columns
+            %img{:src => "http://placehold.it/500x500&text=Thumbnail"}
+              .panel
+                %h5 Item Name
+                %h6.subheader $000.00
+          .four.mobile-two.columns
+            %img{:src => "http://placehold.it/500x500&text=Thumbnail"}
+              .panel
+                %h5 Item Name
+                %h6.subheader $000.00
+          .four.mobile-two.columns
+            %img{:src => "http://placehold.it/500x500&text=Thumbnail"}
+              .panel
+                %h5 Item Name
+                %h6.subheader $000.00
+          .four.mobile-two.columns
+            %img{:src => "http://placehold.it/500x500&text=Thumbnail"}
+              .panel
+                %h5 Item Name
+                %h6.subheader $000.00
+          / End Thumbnails
+          / Managed By
+          .twelve.columns
+            .panel
+              .row
+                .two.mobile-two.columns
+                  %img{:src => "http://placehold.it/300x300&text=Site Owner"}
+                .ten.mobile-two.columns
+                  %strong
+                    This Site Is Managed By
+                    %hr/
+                  Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Donec dignissim nibh fermentum odio ornare sagittis
+          / End Managed By
+    / Footer
+    %footer.row
+      .twelve.columns
+        %hr/
+        .row
+          .six.columns
+            %p &copy; Copyright no one at all. Go to town.
+          .six.columns
+            %ul.link-list.right
+              = render 'layouts/footer_nav'
+    / End Footer
+  

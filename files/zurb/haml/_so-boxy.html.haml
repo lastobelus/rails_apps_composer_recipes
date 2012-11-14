@@ -1,0 +1,90 @@
+.row
+  .twelve.columns
+    / Navigation
+    - if AppConfig.site.nav.main.hierarchical
+      %nav.top-bar
+        %ul
+          = render "layouts/brand_nav"
+          %li.toggle-topbar
+            %a{:href => "#"}
+          = render "layouts/main_nav_hierarchical"
+          %li.divider
+          = render "layouts/user_nav_hierarchical"
+    - else
+      %ul.nav-bar
+        = render "layouts/brand_nav"
+        = render "layouts/main_nav_flat"
+        %li.divider
+        = render "layouts/user_nav_flat"
+    / End Navigation
+    / Header Content
+    .row
+      .six.columns
+        %img{:src => "http://placehold.it/500x500&text=Image"}
+        %br/
+      .six.columns
+        %h3.show-for-small
+          Header
+          %hr/
+        .panel
+          %h4.hide-for-small
+            Header
+            %hr/
+          %h5.subheader Fusce ullamcorper mauris in eros dignissim molestie posuere felis blandit. Aliquam erat volutpat. Mauris ultricies posuere vehicula. Sed sit amet posuere erat. Quisque in ipsum non augue euismod dapibus non et eros. Pellentesque consectetur tempus mi iaculis bibendum. Ut vel dolor sed eros tincidunt volutpat ac eget leo.
+        .row
+          .six.mobile-two.columns
+            .panel
+              %h5 Header
+              %h6.subheader Praesent placerat dui tincidunt elit suscipit sed.
+              %a.small.button{:href => "#"} BUTTON TIME!
+          .six.mobile-two.columns
+            .panel
+              %h5 Header
+              %h6.subheader Praesent placerat dui tincidunt elit suscipit sed.
+              %a.small.button{:href => "#"} BUTTON TIME!
+    / End Header Content
+    / Search Bar
+    .row
+      .twelve.columns
+        .radius.panel
+          %form
+            .row.collapse
+              .ten.mobile-three.columns
+                %input{:type => "text"}/
+              .two.mobile-one.columns
+                %a.postfix.button.expand{:href => "#"} Search
+    / End Search Bar
+    / Thumbnails
+    .row
+      .twelve.show-for-small.columns
+        %h3 Header
+        %hr
+      .three.mobile-two.columns
+        %img{:src => "http://placehold.it/500x500&text=Thumbnail"}
+          .panel
+            %p Description
+      .three.mobile-two.columns
+        %img{:src => "http://placehold.it/500x500&text=Thumbnail"}
+          .panel
+            %p Description
+      .three.mobile-two.columns
+        %img{:src => "http://placehold.it/500x500&text=Thumbnail"}
+          .panel
+            %p Description
+      .three.mobile-two.columns
+        %img{:src => "http://placehold.it/500x500&text=Thumbnail"}
+          .panel
+            %p Description
+    / End Thumbnails
+    / Footer
+    %footer.row
+      .twelve.columns
+        %hr/
+        .row
+          .six.columns
+            %p &copy; Copyright no one at all. Go to town.
+          .six.columns
+            %ul.link-list.right
+              = render 'layouts/footer_nav'
+    / End Footer
+￿

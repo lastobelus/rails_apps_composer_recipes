@@ -1,0 +1,112 @@
+.row
+  .twelve.columns
+    %br/
+    / Mobile Navigation
+    .row
+      .twelve.columns.show-for-small
+        %nav.top-bar
+          %ul
+            %li.name
+              %h1
+                %a{:href => "#"} Title
+            %li.toggle-topbar
+              %a{:href => "#"}
+          %section
+            %ul.left
+              = yield(:main_nav)
+              %li.divider
+              = yield(:user_nav)
+        %br/
+    / End Mobile Navigation
+    / Desktop Side Bar
+    .row
+      .three.columns.hide-for-small
+        %img{:src => "http://placehold.it/230x230&text=[logo]"}/
+        / Navigation
+        %ul.nav-bar.vertical
+          %li.active.has-flyout
+            %a{:href => "#"} Nav Item 1
+            %a.flyout-toggle{:href => "#"}
+              %span
+            %ul.flyout
+              %li
+                %a{:href => "#"} Sub Nav 1
+              %li
+                %a{:href => "#"} Sub Nav 2
+              %li
+                %a{:href => "#"} Sub Nav 3
+          %li
+            %a{:href => "#"} Nav Item 2
+          %li
+            %a{:href => "#"} Nav Item 3
+          %li
+            %a{:href => "#"} Nav Item 4
+        / End Navigation
+        %img.hide-for-small{:src => "http://placehold.it/230x350&text=Advertisement"}/
+      / End Side Bar/ Start Main
+      .nine.columns
+        .row
+          / Mobile Header
+          .twelve.columns.show-for-small
+            %img{:src => "http://placehold.it/1000x550&text=[For Small Screen]"}/
+          / End Mobile Header
+          .twelve.columns.hide-for-small
+            #featured
+              %img{:src => "http://placehold.it/1000x550&text=Slide+Image"}
+                %img{:src => "http://placehold.it/1000x550&text=Slide+Image"}
+                  %img{:src => "http://placehold.it/1000x550&text=Slide+Image"}
+          / End Slider
+          / Thumbnails
+          .twelve.mobile-four.columns
+            .row
+              .twelve.columns.show-for-small
+                %h3 Header
+                %h5.subheader
+                  Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Suspendisse ultrices ornare tempor.
+                %hr/
+            .row{:align => "center"}
+              .four.columns
+                %img{:src => "http://placehold.it/500x500&text=Thumbnail"}/
+                %h6.panel Description
+              .four.columns
+                %img{:src => "http://placehold.it/500x500&text=Thumbnail"}/
+                %h6.panel Description
+              .four.columns
+                %img{:src => "http://placehold.it/500x500&text=Thumbnail"}/
+                %h6.panel Description
+        / End Thumbnails
+        / Content
+        .row
+          .twelve.columns
+            .panel
+              .row
+                .three.mobile-two.columns{:align => "center"}
+                  %h1
+                    %img{:src => "http://placehold.it/180x180&text=Site Owner"}/
+                  %h5
+                    %a.small.radius.button{:href => "#"} Contact Button
+                  %h5
+                    %a.small.radius.button{:href => "#"} Contact Button
+                .nine.mobile-two.columns
+                  %h3 About The Site
+                  %h5.subheader
+                    Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Suspendisse ultrices ornare tempor.
+                  .hide-for-small
+                    %p
+                      Suspendisse ultrices ornare tempor. Aenean eget ultricies libero. Phasellus non ipsum eros. Vivamus at dignissim massa. Aenean dolor libero, blandit quis interdum et, malesuada nec ligula. Nullam erat erat, eleifend sed pulvinar ac.
+        / End Content
+        / Footer
+        .twelve.columns
+          %hr/
+          %footer.row
+            .six.columns
+              %p &copy; Copyright no one at all. Go to town.
+            .six.columns
+              %ul.link-list.right
+                = render 'layouts/footer_nav'
+        / End Footer
+    / End Main
+:javascript
+  $(window).load(function() {
+    $('#featured').orbit({ fluid: '2x1' });
+  });
