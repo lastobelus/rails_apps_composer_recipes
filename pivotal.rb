@@ -5,25 +5,9 @@ gem 'whereuat', git: "git://github.com/lastobelus/whereuat.git"
 after_bundler do
 end
 
-inject_into_file 'app/controllers/application_controller.rb', :before => "\nend", :verbose => true do <<-RUBY
-\n
-  # https://github.com/ryanb/cancan/wiki/changing-defaults
-  def current_ability
-    @current_ability ||= Ability.new(current_admin_user)
-  end
-  
-  # need to switch between root path and admin root path depending on user type
-  rescue_from CanCan::AccessDenied do |exception|
-    respond_to do |format|
-      format.html do
-        redirect_to admin_root_path, :alert => exception.message
-      end
-    end
-  end
-  
-RUBY
-end 
-
+after_everything do
+  template 
+end
 
 __END__
 
