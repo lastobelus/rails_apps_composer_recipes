@@ -1,0 +1,108 @@
+/ Navigation
+%nav.top-bar
+  %ul
+    %li.name
+      %h1
+        %a{:href => "#"} Title
+    %li.toggle-topbar
+      %a{:href => "#"}
+  %section
+    %ul.left
+      = yield(:main_nav)
+    %ul.right
+      = yield(:user_nav)
+/ End Navigation
+.row
+  .twelve.columns
+    / Content Slider
+    .row
+      .twelve.columns.hide-for-small
+        #featured
+          %img{:alt => "slide image", :src => "http://placehold.it/1200x500&text=Slide Image"}
+            %img{:alt => "slide image", :src => "http://placehold.it/1200x500&text=Slide Image"}
+              %img{:alt => "slide image", :src => "http://placehold.it/1200x500&text=Slide Image"}
+    / End Content Slider
+    / Mobile Header
+    .row
+      .twelve.columns.show-for-small
+        %img{:src => "http://placehold.it/1200x700&text=Mobile Header"}
+    %br/
+    / End Mobile Header
+    .row
+      .twelve.columns
+        .row
+          / Shows
+          .four.mobile-two.push-two-mobile.columns
+            %h4 Upcoming Shows
+            %hr/
+            .row
+              .one.column
+                %img{:src => "http://placehold.it/50x50&text=[img]"}/
+              .nine.columns
+                %h5
+                  %a{:href => "#"} Venue Name
+                %h6.subheader.show-for-small Doors at 00:00pm
+            %hr/
+            .hide-for-small
+              .row
+                .one.column
+                  %img{:src => "http://placehold.it/50x50&text=[img]"}/
+                .nine.columns
+                  %h5.subheader
+                    %a{:href => "#"} Venue Name
+              %hr/
+              .row
+                .one.column
+                  %img{:src => "http://placehold.it/50x50&text=[img]"}/
+                .nine.columns
+                  %h5.subheader
+                    %a{:href => "#"} Venue Name
+              %hr/
+              .row
+                .one.column
+                  %img{:src => "http://placehold.it/50x50&text=[img]"}/
+                .nine.columns
+                  %h5.subheader
+                    %a{:href => "#"} Venue Name
+          / End Shows
+          / Image
+          .four.mobile-two.pull-two-mobile.columns
+            %img{:src => "http://placehold.it/300x465&text=Image"}/
+          / End Image
+          / Feed
+          .four.mobile-four.columns
+            %h4 Blog
+            %hr/
+            .panel
+              %h5
+                %a{:href => "#"} Post Title 1
+              %h6.subheader
+                Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Suspendisse ultrices ornare tempor...
+              %h6
+                %a{:href => "#"} Read More »
+            .panel.hide-for-small
+              %h5
+                %a{:href => "#"} Post Title 2 »
+            .panel.hide-for-small
+              %h5
+                %a{:href => "#"} Post Title 3 »
+            %a.right{:href => "#"} Go To Blog »
+          / End Feed
+    / End Content
+    / Footer
+    %footer.row
+      .twelve.columns
+        %hr/
+        .row
+          .six.columns
+            %p &copy; Copyright no one at all. Go to town.
+          .six.columns
+            %ul.link-list.right
+              = render 'layouts/footer_nav'
+    / End Footer
+/ Included JS Files
+
+:javascript
+  $(window).load(func   $('#featured').orbit({ fluid: '2x1' });
+  });
+  / End Footer

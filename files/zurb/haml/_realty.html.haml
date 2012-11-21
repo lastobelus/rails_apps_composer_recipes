@@ -1,0 +1,83 @@
+/ Navigation
+%nav.top-bar.fixed
+  %ul
+    %li.name
+      %h1
+        %a{:href => "#"} Title
+    %li.toggle-topbar
+      %a{:href => "#"}
+  %section
+    %ul.left
+      = yield(:main_nav)
+    %ul.right
+      = yield(:user_nav)
+%br/
+%br/
+/ End Navigation
+/ Header
+%img{:src => "http://placehold.it/1600x600&text=Header"}
+%br/
+%br/
+/ End Header
+.row
+  .three.panel.columns
+    %img{:src => "http://placehold.it/500x500&text=Image"}
+      %h4 Header
+      %p Fusce ullamcorper mauris in eros dignissim molestie posuere felis blandit. Aliquam erat volutpat. Mauris ultricies posuere vehicula. Sed sit amet posuere erat. Quisque in ipsum non augue euismod dapibus non et eros.
+      %hr
+        .row
+          .four.columns
+            %a.small.button{:href => "#"} Link
+          .four.columns
+            %a.small.button{:href => "#"} Link
+          .four.columns
+            %a.small.button{:href => "#"} Link
+  .nine.columns
+    .panel
+      .row
+        .three.columns
+          %img{:src => "http://placehold.it/600x500&text=Thumbnail"}
+        .three.columns
+          %img{:src => "http://placehold.it/600x500&text=Thumbnail"}
+        .three.columns
+          %img{:src => "http://placehold.it/600x500&text=Thumbnail"}
+        .three.columns
+          %img{:src => "http://placehold.it/600x500&text=Thumbnail"}
+        .three.columns
+          %img{:src => "http://placehold.it/600x500&text=Thumbnail"}
+        .three.columns
+          %img{:src => "http://placehold.it/600x500&text=Thumbnail"}
+        .three.columns
+          %img{:src => "http://placehold.it/600x500&text=Thumbnail"}
+        .three.columns
+          %img{:src => "http://placehold.it/600x500&text=Thumbnail"}
+        .three.columns
+          %img{:src => "http://placehold.it/600x500&text=Thumbnail"}
+        .three.columns
+          %img{:src => "http://placehold.it/600x500&text=Thumbnail"}
+        .three.columns
+          %img{:src => "http://placehold.it/600x500&text=Thumbnail"}
+        .three.columns.end
+          %img{:src => "http://placehold.it/600x500&text=Thumbnail"}
+    .row
+      .six.columns
+        .panel
+          %h5 Subheader
+          %p Sed sit amet posuere erat. Quisque in ipsum non augue euismod dapibus non et eros.
+          %a.small.button{:href => "#"} Link
+      .six.columns
+        .panel
+          %h5 Subheader
+          %p Sed sit amet posuere erat. Quisque in ipsum non augue euismod dapibus non et eros.
+          %a.small.button{:href => "#"} Link
+/ Footer
+%footer.row
+  .twelve.columns
+    %hr/
+    .row
+      .six.columns
+        %p &copy; Copyright no one at all. Go to town.
+      .six.columns
+        %ul.link-list.right
+          = render 'layouts/footer_nav'
+/ End Footer
