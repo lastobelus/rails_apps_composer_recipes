@@ -3,9 +3,11 @@ after_bundler do
   say "prefs: #{prefs[:run_generators].inspect}"
   prefs[:run_generators].each do |provider|
     gem_name, generators  =  provider.first
-    gem gem_name
-    generators.each do |generator|  
-      generate "active_admin:install #{config['activeadmin_admin_user_model']}#{registerable}"  
+    generators = [generators].flatten
+    # gem gem_name
+    generators.each do |generator| 
+      say "running #{generator}"
+      generate generator
       git :add => '-A' if prefer :git, true
       git :commit => %Q{-qm "#{generator}"} if prefer :git, true
     end
