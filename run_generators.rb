@@ -1,16 +1,11 @@
 after_bundler do
   say "running generators"
   say "prefs: #{prefs[:run_generators].inspect}"
-  prefs[:run_generators].each do |provider|
-    gem_name, generators  =  provider.first
-    generators = [generators].flatten
-    # gem gem_name
-    generators.each do |generator| 
-      say "running #{generator}"
-      generate generator
-      git :add => '-A' if prefer :git, true
-      git :commit => %Q{-qm "#{generator}"} if prefer :git, true
-    end
+  prefs[:run_generators].each do |generator| 
+    say "running #{generator}"
+    generate generator, "--force"
+    git :add => '-A' if prefer :git, true
+    git :commit => %Q{-qm "#{generator}"} if prefer :git, true
   end
 end
 
