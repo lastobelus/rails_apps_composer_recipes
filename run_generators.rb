@@ -21,4 +21,6 @@ author: lastobelus
 
 category: other
 
+run_after: [git, frontend, gems]
+
 config: 
