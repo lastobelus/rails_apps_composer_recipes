@@ -1,28 +1,19 @@
+=begin
+What are we trying to accomplish:
+1. when in a meeting we can go through the templates and find a starting point
+2. when a template is chosen it gets saved with a git message
+3. need an in-browser chooser for people who can't use the command line
+
+
+=end
+
+
 gem 'whereuat', git: "git://github.com/lastobelus/whereuat.git"
 
 @prefs[:pivotal_project_name] = config[:pivotal_project_name]
 
 after_bundler do
 end
-
-inject_into_file 'app/controllers/application_controller.rb', :before => "\nend", :verbose => true do <<-RUBY
-\n
-  # https://github.com/ryanb/cancan/wiki/changing-defaults
-  def current_ability
-    @current_ability ||= Ability.new(current_admin_user)
-  end
-  
-  # need to switch between root path and admin root path depending on user type
-  rescue_from CanCan::AccessDenied do |exception|
-    respond_to do |format|
-      format.html do
-        redirect_to admin_root_path, :alert => exception.message
-      end
-    end
-  end
-  
-RUBY
-end 
 
 
 __END__
