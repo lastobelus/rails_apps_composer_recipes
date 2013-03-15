@@ -15,6 +15,9 @@ gem 'whereuat', git: "git://github.com/lastobelus/whereuat.git"
 after_bundler do
 end
 
+after_everything do
+  template 
+end
 
 __END__
 
