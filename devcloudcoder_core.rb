@@ -1,4 +1,5 @@
 gem "rails_apps_composer",  git: "git://github.com/lastobelus/rails_apps_composer.git", branch: "devcloudcoder"
+gem "grit", group: "development"
 
 __END__
 
